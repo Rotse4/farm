@@ -41,7 +41,7 @@ def compined(request):
             print('not okk')
     
     
-    return Response(geo_serializer.errors)
+    return Response(serializer.errors)
 
 
 @api_view(['GET'])
