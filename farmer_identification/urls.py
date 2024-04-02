@@ -6,5 +6,7 @@ urlpatterns =[
     path('details', views.get_farmers),
     path('geography', views.geography),
     path('compined', views.compined),
+    path('register', views.register),
+
 
 ]

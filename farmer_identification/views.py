@@ -39,6 +39,8 @@ def compined(request):
             return Response({"user_data":serializer.data, "geo_data":geo_serializer.data},)
         else:
             print('not okk')
+            return Response(geo_serializer.errors)
+
     
     
     return Response(serializer.errors)
