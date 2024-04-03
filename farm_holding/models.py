@@ -12,7 +12,7 @@ class FarmHoldings(models.Model):
     long=models.DecimalField(decimal_places=5,max_digits=10, null=True)
     accuracy=models.IntegerField()
     legstatus=models.CharField(max_length=100)
-    other_farms=models.BooleanField()
+    other_farms=models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
