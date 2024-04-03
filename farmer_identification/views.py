@@ -3,6 +3,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from . serializers import IndividualDetailSerializer, EnumarationSerializer
 from . models import IndividualDetails
+from django.db.models import Q
+from django.http import Http404
 
 # Create your views here.
 
@@ -10,11 +12,14 @@ from . models import IndividualDetails
 
 @api_view(['POST'])
 def register(request):
+    print(request.data)
     serializer= IndividualDetailSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data)
     
+    print('siyuko sawa')
+    print(serializer.errors)
     return Response(serializer.errors)
 
 @api_view(['POST'])
@@ -53,5 +58,17 @@ def get_farmers(request):
     return Response({'farmers': serilizer.data})
 
 
+@api_view(['GET'])
+def search(request):
+    national_id = request.GET.get('national_id', None)
 
+    if not national_id:
+        raise Http404("National ID not provided.")
 
+    queryset = IndividualDetails.objects.filter(national_id=national_id)
+
+    if not queryset.exists():
+        raise Http404("Farmer with the provided National ID does not exist.")
+
+    serializer = IndividualDetailSerializer(queryset, many=True)
+    return Response({"farmers": serializer.data})
