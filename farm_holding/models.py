@@ -1,7 +1,9 @@
 from django.db import models
+from farmer_identification.models import IndividualDetails
 
 # Create your models here.
 class FarmHoldings(models.Model):
+    farmer=models.ForeignKey(IndividualDetails, on_delete=models.CASCADE)
     name=models.CharField(max_length=100)
     acrage=models.IntegerField()
     areaunit=models.CharField(max_length=50)
@@ -14,5 +16,21 @@ class FarmHoldings(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+class Crop(models.Model):
+    farmer=models.ForeignKey(IndividualDetails, on_delete=models.CASCADE)
+    crop=models.CharField(max_length=100)
+    total_acrage=models.IntegerField()
+    unit_area=models.CharField(max_length=100)
+    certified_seeds=models.BooleanField()
+    purpose=models.CharField(max_length=100)
+    water_source=models.CharField(max_length=50)
+    crop_system=models.CharField(max_length=100)
+    fertilizer=models.BooleanField()
+    pestcide=models.BooleanField()
 
 
+    def __str__(self):
+        return self.crop
+    
