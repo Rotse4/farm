@@ -3,7 +3,7 @@ from farmer_identification.models import IndividualDetails
 
 # Create your models here.
 class FarmHoldings(models.Model):
-    farmer=models.ForeignKey(IndividualDetails, on_delete=models.CASCADE)
+    farmer=models.ForeignKey(IndividualDetails, on_delete=models.CASCADE, null=True)
     name=models.CharField(max_length=100)
     acrage=models.IntegerField()
     areaunit=models.CharField(max_length=50)
@@ -19,7 +19,7 @@ class FarmHoldings(models.Model):
     
 
 class Crop(models.Model):
-    farmer=models.ForeignKey(IndividualDetails, on_delete=models.CASCADE)
+    farmer=models.ForeignKey(IndividualDetails, on_delete=models.CASCADE, null=True)
     crop=models.CharField(max_length=100)
     total_acrage=models.IntegerField()
     unit_area=models.CharField(max_length=100)
