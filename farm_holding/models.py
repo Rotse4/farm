@@ -23,12 +23,12 @@ class Crop(models.Model):
     crop=models.CharField(max_length=100)
     total_acrage=models.IntegerField()
     unit_area=models.CharField(max_length=100)
-    certified_seeds=models.BooleanField()
+    certified_seeds=models.CharField(max_length=100)
     purpose=models.CharField(max_length=100)
     water_source=models.CharField(max_length=50)
     crop_system=models.CharField(max_length=100)
-    fertilizer=models.BooleanField()
-    pestcide=models.BooleanField()
+    fertilizer=models.CharField(max_length=100)
+    pestcide=models.CharField(max_length=100)
 
 
     def __str__(self):
