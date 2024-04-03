@@ -13,6 +13,7 @@ SEX_CHOICES=(
 
 # Create your models here.
 class EnumarationGeography(models.Model):
+    farmer=models.ForeignKey('IndividualDetails', on_delete=models.CASCADE, null=True)
     county=models.CharField(max_length=100)
     constituency=models.CharField(max_length=100)
     sub_county=models.CharField(max_length=100)
