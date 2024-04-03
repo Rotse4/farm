@@ -5,4 +5,5 @@ urlpatterns =[
     # path('', views.register),
     path('farm', views.post_farm_holdings),
     path('crop', views.crop),
+    path('get_crop', views.get_crop),
 ]

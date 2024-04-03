@@ -26,3 +26,10 @@ def crop(request):
         return Response(serializer.data)
     
     return Response(serializer.errors) 
+
+@api_view(['GET'])
+def get_crop(request):
+    location= Crop.objects.all()
+    serilizer= CropSerializer(location, many=True)
+    return Response({'crops': serilizer.data})
+
