@@ -8,5 +8,6 @@ urlpatterns =[
     path('compined', views.compined),
     path('register', views.register),
     path('search', views.search),
+    path('location', views.location),
 
 ]

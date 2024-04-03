@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from . serializers import IndividualDetailSerializer, EnumarationSerializer
-from . models import IndividualDetails
+from . models import IndividualDetails, EnumarationGeography
 from django.db.models import Q
 from django.http import Http404
 
@@ -56,6 +56,13 @@ def get_farmers(request):
     farmers= IndividualDetails.objects.all()
     serilizer= IndividualDetailSerializer(farmers, many=True)
     return Response({'farmers': serilizer.data})
+
+@api_view(['GET'])
+def location(request):
+    location= EnumarationGeography.objects.all()
+    serilizer= EnumarationSerializer(location, many=True)
+    return Response({'Farmer_location': serilizer.data})
+
 
 
 @api_view(['GET'])
