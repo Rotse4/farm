@@ -33,3 +33,9 @@ def get_crop(request):
     serilizer= CropSerializer(location, many=True)
     return Response({'crops': serilizer.data})
 
+@api_view(['GET'])
+def get_farm_holdings(request):
+    farms= FarmHoldings.objects.all()
+    serilizer= FarmHoldingsSerializer(farms, many=True)
+    return Response({'farm': serilizer.data})
+
